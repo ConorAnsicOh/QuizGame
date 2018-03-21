@@ -1,0 +1,23 @@
+#wrapperBox {
+	margin: 0px;
+	padding: 0px;
+	width: 380px;
+	height: 500px;
+	color: #FAF4C0;
+	background-color: #003A51;
+}
+
+div {
+	border-radius: 10px;
+	align-content: center;
+	display: inline-block;
+	text-align: center;
+}
+
+#title {
+	border: 0px;
+	width: 350px;
+	height: 150px;
+	vertical-align: middle;
+	text-align: center;
+}

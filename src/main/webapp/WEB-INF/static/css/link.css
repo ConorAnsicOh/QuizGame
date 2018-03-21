@@ -1,0 +1,8 @@
+a {
+	color: #FAF4C0;
+	text-decoration: none;	
+}
+
+a:HOVER {
+	text-decoration: underline;
+}
