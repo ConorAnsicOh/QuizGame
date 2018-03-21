@@ -2,13 +2,17 @@ package com.ktds.conor.guest.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ktds.conor.guest.service.GuestService;
@@ -30,7 +34,6 @@ public class GuestController {
 		
 		return view;
 	}
-	
 	@RequestMapping( value = "/signIn", method = RequestMethod.POST)
 	public ModelAndView goGuestMainView(@ModelAttribute("loginForm") @Valid GuestVO guestVO, Errors errors) {
 		
@@ -49,11 +52,35 @@ public class GuestController {
 		return view;
 	}
 	
-	@RequestMapping("/signUp")
-	public String viewSignUpPage() {
+	@RequestMapping( value="/login", method = RequestMethod.POST )
+	public ModelAndView viewGuestMainView(@ModelAttribute("loginForm") @Valid GuestVO guestVO, Errors errors, HttpSession session) {
+		
+		
+		
+		return new ModelAndView();
+	}
+//	-------------------------------------------------------------------미완료
+//	-------------------------------------------------------------------완료
+	@RequestMapping( value="signUp", method = RequestMethod.GET)
+	public String viewSignUpView() {
 		return "guest/signUpView";
 	}
+	
+	
+	@RequestMapping( value="/signUp", method = RequestMethod.POST )
+	public ModelAndView doSignUpGuest(@ModelAttribute("registForm") @Valid GuestVO guestVO, Errors errors) {
+		
+		if (errors.hasErrors()) {
+			return new ModelAndView("guest/signUpView");
+		}
+		if (guestService.createGuest(guestVO)) {
+			return new ModelAndView("share/loginView");
+		}
 
+		return new ModelAndView("guest/signUpView");
+	}
+//	-------------------------------------------------------------------완료
+//	-------------------------------------------------------------------미완료
 	@RequestMapping("/howToPlay")
 	public String viewHowToPlayPage() {
 		return "guest/howToPlayView";

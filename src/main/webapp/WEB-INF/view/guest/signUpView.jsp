@@ -20,8 +20,13 @@
 			location.href = "<c:url value = "/" />"
 		});
 		$("#confirmBtn").click(function() {
-			alert("회원 가입을 완료했습니다.")
-			location.href = "<c:url value = "/" />"
+			alert("회원 가입을 완료했습니다.");
+			
+			$("#registForm").attr({
+				"method" : "post", 
+				"action" : "<c:url value="/signUp"/>"
+			}).submit();
+			
 		});
 	});
 
@@ -37,19 +42,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form modelAttribute="regist">
-		<div	id="wrapperBox">
-			<div	id="title">
-				<h1>회원가입</h1>
-				<p style="font: 5pt; color: #9EBEC4">아래 내용을 모두 입력해주세요.</p>
-			</div>
+	<div	id="wrapperBox">
+		<div	id="title">
+			<h1>회원가입</h1>
+			<p style="font: 5pt; color: #9EBEC4">아래 내용을 모두 입력해주세요.</p>
+		</div>
 			
-			<div	id="registBox">
+		<form:form modelAttribute="registForm">
+			<div>
 				<div style="margin-left: 90px;">
 					ID : <input	type="text"	id="id"	name="userId"	placeholder="WRITE ID"/>			
 				</div>
 				<div style=" margin-top: 10px; margin-left: 20px;">
-					PASSWORD : <input	type="text"	id="password" name="password" placeholder="WRITE PASSWORD"/>			
+				PASSWORD : <input	type="text"	id="password" name="password" placeholder="WRITE PASSWORD"/>			
 				</div>
 				<div style=" margin-top: 10px;">
 					REPASSWORD : <input	type="text"	id="passwordCheck"	placeholder="WRITE PASSWORD"/>
@@ -61,11 +66,11 @@
 					EMAIL : <input	type="email"	id="email"	name="email"	placeholder="WRITE EMAIL"/>				
 				</div>
 			</div>
-			<div	id="submitBox">
-				<div	id="cancelBtn"	class="button">취소</div>
-				<div style="margin-left: 30px;"	id="confirmBtn"	class="button">작성완료</div>
-			</div>
+		</form:form>
+		<div	id="submitBox">
+			<div	id="cancelBtn"	class="button">취소</div>
+			<div style="margin-left: 30px;"	id="confirmBtn"	class="button">작성완료</div>
 		</div>
-	</form:form>
+	</div>
 </body>
 </html>

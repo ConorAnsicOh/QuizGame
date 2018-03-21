@@ -18,11 +18,17 @@
 <script type="text/javascript">
 	$().ready(function() {
 
+		<c:if	test="sessionScope.">
+		</c:if>
+		
+		
+		
+		
 		$("#signIn").click(function() {
 
 			$("#loginForm").attr({
 				"method" : "post",
-				"action" : "<c:url value="/signUp"/>"
+				"action" : "<c:url value="/login"/>"
 			}).submit();
 
 		});

@@ -16,4 +16,9 @@ public class GuestServiceImpl implements GuestService {
 		return guestDao.insertGuest(guestVO) > 0;
 	}
 
+	@Override
+	public GuestVO readGuest(GuestVO guestVO) {
+		return guestDao.selectGuest(guestVO);
+	}
+
 }

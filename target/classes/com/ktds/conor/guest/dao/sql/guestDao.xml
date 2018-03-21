@@ -3,8 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="GuestDao">
-	<!-- 
-	<resultMap type="QuizVO" id="PostMap">
+	
+	<!-- <resultMap type="GuestVO" id="GuestVOMAP">
   		<id column="ID" property="id"/>
   		<result column="TITLE" property="title"/>
   		<result column="BODY" property="body"/>
@@ -22,9 +22,9 @@
   			<result column="NICKNAME" property="nickname"/>
   			<result column="REGIST_DATE" property="registDate"/>
   		</association>
-  	</resultMap>
- -->	
-	<insert id="createGuest" parameterType="GuestVO">
+  	</resultMap> -->
+
+	<insert id="insertGuest" parameterType="GuestVO">
   		INSERT	INTO	GUEST	(
   			ID
   			, USER_ID
@@ -45,21 +45,17 @@
   	</insert>
   		<!-- VALUES의 규칙은 VO의 멤버 변수를 #{}넣어 적어준다. -->
 	
-	<!-- 
-	id = 인터페이스에 있는 Method의 이름.
-	<select id="selectSomthing">
+
+	<!-- id = 인터페이스에 있는 Method의 이름. -->
+	<select id="selectGuest"	resultType="GuestVOMap"	parameterType="GuestVO">
 		SELECT	ID
-				, TITLE
-				, BODY
-				, NICKNAME
-				, USER_ID
-				, WRITE_DATE
-				, VIEW_COUNT
-				, RECOMMEND_COUNT
-				, REQUEST_IP
-		FROM	COMMUNITY
-		ORDER BY ID DESC
-		/*;은 쓰면 에러가 나므로 쓰지 않는다.*/
+  				, USER_ID
+  				, PASSWORD
+  				, NICKNAME
+  				, EMAIL
+				, REGIST_DATE
+		FROM	GUEST
+		ORDER BY ID ASC
 	</select>
-	 -->
+
 </mapper>

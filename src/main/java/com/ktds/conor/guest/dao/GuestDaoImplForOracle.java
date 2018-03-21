@@ -11,4 +11,9 @@ public class GuestDaoImplForOracle  extends SqlSessionDaoSupport implements Gues
 		return getSqlSession().insert("GuestDao.insertGuest", guestVO);
 	}
 
+	@Override
+	public GuestVO selectGuest(GuestVO guestVO) {
+		return getSqlSession().selectOne("GuestDao.selectGuest", guestVO);
+	}
+
 }
