@@ -7,4 +7,6 @@ public interface GuestDao {
 	public int insertGuest(GuestVO guestVO);
 
 	public GuestVO selectGuest(GuestVO guestVO);
+	
+	public int selectCountGuestUserId(String userId);
 }

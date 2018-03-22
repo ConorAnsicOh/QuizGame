@@ -4,7 +4,9 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 
 import com.ktds.conor.guest.vo.GuestVO;
 
-public class GuestDaoImplForOracle  extends SqlSessionDaoSupport implements GuestDao {
+public	class GuestDaoImplForOracle 
+		extends SqlSessionDaoSupport 
+		implements GuestDao {
 
 	@Override
 	public int insertGuest(GuestVO guestVO) {
@@ -14,6 +16,11 @@ public class GuestDaoImplForOracle  extends SqlSessionDaoSupport implements Gues
 	@Override
 	public GuestVO selectGuest(GuestVO guestVO) {
 		return getSqlSession().selectOne("GuestDao.selectGuest", guestVO);
+	}
+
+	@Override
+	public int selectCountGuestUserId(String userId) {
+		return getSqlSession().selectOne("GuestDao.selectCountGuestUserId", userId);
 	}
 
 }

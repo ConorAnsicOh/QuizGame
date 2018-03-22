@@ -17,12 +17,6 @@
 	src="<c:url value="/static/js/jquery-3.3.1.min.js"/>"></script>
 <script type="text/javascript">
 	$().ready(function() {
-
-		<c:if	test="sessionScope.">
-		</c:if>
-		
-		
-		
 		
 		$("#signIn").click(function() {
 
@@ -78,7 +72,7 @@
 					<div id="idInputBox">
 						ID : <input type="text" id="id" name="id" placeholder="WRITE HERE" />
 					</div>
-					<div>
+					<div id="passwordInputBox">
 						PASSWORD : <input type="text" id="password" name="password"
 							placeholder="WRITE HERE" />
 					</div>

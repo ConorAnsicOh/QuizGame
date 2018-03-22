@@ -19,7 +19,33 @@
 		$("#cancelBtn").click(function() {
 			location.href = "<c:url value = "/" />"
 		});
+		
+		$("#userId").keyup(function() {
+			var value = $(this).val();
+			if ( value != "" ) {
+				
+				$.post( "<c:url value="/api/exists/userId"/>", {
+					userId : value
+				}, function(idData) {
+					if (idData.response) {
+						$("#userId").removeClass("valid");
+						$("#userId").addClass("invalid");
+					}
+					else {
+						$("#userId").removeClass("invalid");
+						$("#userId").addClass("valid");
+					}
+				});/* AJAX post는 비동기식이다. */
+			}
+			else {
+				$(this).removeClass("valid");
+				$(this).addClass("invalid");				
+			}
+		});
+		
+		
 		$("#confirmBtn").click(function() {
+			
 			alert("회원 가입을 완료했습니다.");
 			
 			$("#registForm").attr({
@@ -51,7 +77,7 @@
 		<form:form modelAttribute="registForm">
 			<div>
 				<div style="margin-left: 90px;">
-					ID : <input	type="text"	id="id"	name="userId"	placeholder="WRITE ID"/>			
+					ID : <input	type="text"	id="userId"	name="userId"	placeholder="WRITE ID"/>			
 				</div>
 				<div style=" margin-top: 10px; margin-left: 20px;">
 				PASSWORD : <input	type="text"	id="password" name="password" placeholder="WRITE PASSWORD"/>			

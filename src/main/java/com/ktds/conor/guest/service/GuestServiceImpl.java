@@ -21,4 +21,9 @@ public class GuestServiceImpl implements GuestService {
 		return guestDao.selectGuest(guestVO);
 	}
 
+	@Override
+	public boolean readCountGuestUserId(String userId) {
+		return guestDao.selectCountGuestUserId(userId) > 0;
+	}
+
 }
