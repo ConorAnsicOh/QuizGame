@@ -1,11 +1,21 @@
 package com.ktds.conor.guest.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 public class GuestVO {
 
+	
 	public int id;
+	
+	@NotEmpty(message="아이디를 입력해주세요.")
 	public String userId;
+	
+	@NotEmpty(message="패스워드를 입력해주세요.")
 	public String password;
+	
 	public String email;
+	
+	@NotEmpty(message="닉네임을 입력해주세요.")
 	public String nickname;
 
 	public String registDate;

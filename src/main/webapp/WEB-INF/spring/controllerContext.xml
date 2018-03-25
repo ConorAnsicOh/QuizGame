@@ -4,7 +4,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	<bean id="guestController"	class="com.ktds.conor.guest.web.GuestController">
-		<property name="guestService" ref="guestService"></property>
+		<property name="guestService"	ref="guestService"></property>
+	</bean>
+	
+	<bean id="guestValidController" class="com.ktds.conor.guest.web.GuestValidController">
+		<property name="guestService"	ref="guestService"></property>
 	</bean>
 
 </beans>

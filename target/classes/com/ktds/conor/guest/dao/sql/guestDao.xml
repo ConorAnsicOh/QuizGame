@@ -3,14 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="GuestDao">
-	<resultMap type="GuestVO" id="GuestVOMap">
+
+
+<!-- resultMap 결과를 모두 종합시킬때 활성화해서 사용한다. 	
+<resultMap type="GuestVO" id="GuestVOMap">
 		<id	column="ID"	property="id"/>
 		<result column="USER_ID" property="userId"/>
 		<result column="PASSWORD" property="password"/>
 		<result column="NICKNAME" property="nickname"/>
 		<result column="EMAIL" property="email"/>
 		<result column="REGIST_DATE" property="registDate"/>
-	</resultMap>
+	</resultMap> 
+	-->
 	<!-- <resultMap type="GuestVO" id="GuestVOMAP">
   		<id column="ID" property="id"/>
   		<result column="TITLE" property="title"/>
@@ -52,9 +56,10 @@
   	</insert>
   		<!-- VALUES의 규칙은 VO의 멤버 변수를 #{}넣어 적어준다. -->
 	
+	<!-- selectAllGuest 모든 게스트의 정보를 다 불러온다. -->
 
-	<!-- id = 인터페이스에 있는 Method의 이름. -->
-	<select id="selectGuest"	resultType="GuestVOMap"	parameterType="GuestVO">
+	<!-- selectGuest는 게스트의 비밀번호와 아이디가 맞는 사람만 호출한다. -->
+	<select id="selectGuest"	resultType="GuestVO"	parameterType="GuestVO">
 		SELECT	ID
   				, USER_ID
   				, PASSWORD
@@ -62,6 +67,8 @@
   				, EMAIL
 				, REGIST_DATE
 		FROM	GUEST
+		WHERE	USER_ID = #{userId}
+		AND		PASSWORD = #{password}
 	</select>
 
 </mapper> 

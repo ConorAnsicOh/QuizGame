@@ -72,9 +72,15 @@
 					<div id="idInputBox">
 						ID : <input type="text" id="id" name="id" placeholder="WRITE HERE" />
 					</div>
+					<div>
+						<form:errors path="userId"/><!--체크하고자하는 엘리먼트의 name을 적어준다.  -->
+					</div>
 					<div id="passwordInputBox">
 						PASSWORD : <input type="text" id="password" name="password"
 							placeholder="WRITE HERE" />
+					</div>
+					<div>
+						<form:errors path="password"/><!--체크하고자하는 엘리먼트의 name을 적어준다.  -->
 					</div>
 				</div>
 				<div id="btnBox">

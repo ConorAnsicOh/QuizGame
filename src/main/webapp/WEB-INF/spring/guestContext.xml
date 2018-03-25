@@ -10,5 +10,4 @@
 	<bean	id="guestService"	class="com.ktds.conor.guest.service.GuestServiceImpl">
 		<property name="guestDao"	ref="guestDaoForOracle"/>
 	</bean>
-
 </beans>

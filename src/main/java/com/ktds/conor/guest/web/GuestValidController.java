@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.ktds.conor.guest.service.GuestService;
 
 @Controller
-public class GusetValidController {
+public class GuestValidController {
 
 	private GuestService guestService;
 	
@@ -19,6 +19,7 @@ public class GusetValidController {
 		this.guestService = guestService;
 	}
 	
+//	TODO 유저아이디 api체크
 	@RequestMapping("api/exists/userId")
 	@ResponseBody
 	public Map<String, Boolean> apiIsExistsId(@RequestParam String userId) {
@@ -30,4 +31,15 @@ public class GusetValidController {
 		
 		return response;
 	}
+	
+	
+//	TODO 닉네임 api체크
+	@RequestMapping("api/exists/nickname")
+	@ResponseBody
+	public Map<String, Boolean>	apiIsExistsNickname(@RequestParam String nickname) {
+		Map<String, Boolean> response = new HashMap<String, Boolean>();
+		
+		return response;
+	}
 }
+
