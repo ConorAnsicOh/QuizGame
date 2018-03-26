@@ -18,7 +18,16 @@
 <script type="text/javascript">
 	$().ready(function() {
 		
-		$("#signIn").click(function() {
+	/* 	<c:if test="${sessionScope.status eq 'emptyId'}">
+			$("#errorId").show();
+		</c:if>
+	
+		<c:if test="${sessionScope.status eq 'emptyPassword'}">
+			$("#errorPassword").show();
+		</c:if> */
+		
+		
+		$("#signInBtn").click(function() {
 
 			$("#loginForm").attr({
 				"method" : "post",
@@ -62,15 +71,23 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
 	<form:form modelAttribute="loginForm">
 		<div id="wrapperBox">
 			<div id="title">
 				<h1>Quiz Game</h1>
 			</div>
+			<c:if test="${sessionScope.status eq 'fail'}">
+				<div id="invalidIDAndPassword">
+					<div>아이디 혹은 비밀번호가 잘못되었습니다.</div>
+					<div>한번 더 확인 후 시도해 주세요.</div>
+				</div>
+			</c:if>
 			<div>
 				<div id="loginBox">
 					<div id="idInputBox">
-						ID : <input type="text" id="id" name="id" placeholder="WRITE HERE" />
+						ID : <input type="text" id="userId" name="userId" placeholder="WRITE HERE" />
 					</div>
 					<div>
 						<form:errors path="userId"/><!--체크하고자하는 엘리먼트의 name을 적어준다.  -->
@@ -87,9 +104,7 @@
 					<div id="signUpBtn" class="button">
 						<a href="<c:url value="/signUp"/>">회원가입</a>
 					</div>
-					<div id="signInBtn" class="button">
-						<a href="<c:url value="/signIn"/>">로그인</a>
-					</div>
+					<div id="signInBtn" class="button">로그인</div>
 				</div>
 			</div>
 			<div>

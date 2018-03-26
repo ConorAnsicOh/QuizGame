@@ -59,7 +59,9 @@
 	<!-- selectAllGuest 모든 게스트의 정보를 다 불러온다. -->
 
 	<!-- selectGuest는 게스트의 비밀번호와 아이디가 맞는 사람만 호출한다. -->
-	<select id="selectGuest"	resultType="GuestVO"	parameterType="GuestVO">
+	<select id="selectGuest"	
+			resultType="GuestVO"	
+			parameterType="GuestVO">
 		SELECT	ID
   				, USER_ID
   				, PASSWORD
@@ -70,5 +72,9 @@
 		WHERE	USER_ID = #{userId}
 		AND		PASSWORD = #{password}
 	</select>
+	
+	
+	
+	
 
 </mapper> 

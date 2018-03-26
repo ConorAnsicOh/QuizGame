@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ktds.conor.constants.Guest;
 import com.ktds.conor.guest.service.GuestService;
 import com.ktds.conor.guest.vo.GuestVO;
 
@@ -52,10 +53,21 @@ public class GuestController {
 	
 	//TODO 여기부터 >> LOGINVIEW에서 정보오면 확인하는 곳.
 	@RequestMapping( value="/login", method = RequestMethod.POST )
-	public ModelAndView viewGuestMainView(@ModelAttribute("loginForm") @Valid GuestVO guestVO, Errors errors, HttpSession session, HttpServletRequest request) {
+	public String doLogin( @ModelAttribute("loginForm") @Valid GuestVO guestVO, Errors errors, HttpSession session, HttpServletRequest request) {
+		session = request.getSession();
 		
+		GuestVO loginInfo = guestService.readGuest(guestVO);
 		
-		return new ModelAndView("redirect:/guestMainView");
+		if ( loginInfo != null ) {
+			session.setAttribute(Guest.USER, loginInfo);
+			return "guest/guestMainView";
+		}
+		
+		if ( errors.hasErrors() ) {
+			session.setAttribute("status", "fail");
+			return "redirect:/";			
+		}
+		return "guest/loginView";
 	}
 	
 //	-------------------------------------------------------------------미완료
